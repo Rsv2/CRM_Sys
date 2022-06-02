@@ -1,0 +1,22 @@
+﻿@using Site.Controllers
+@{ Layout = "_Layout"; }
+<div style="position:relative;overflow:hidden;">
+    <a href="https://yandex.ru/maps/20155/olenegorsk/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Оленегорск</a><a href="https://yandex.ru/maps/20155/olenegorsk/?ll=33.266960%2C68.142161&utm_medium=mapframe&utm_source=maps&z=14" style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс Карты — транспорт, навигация, поиск мест</a><iframe src="https://yandex.ru/map-widget/v1/-/CCU5zHrW1D" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+</div>
+<p id="TitleName">Контакты</p>
+@if (AccountController.Role == "admin")
+{
+    <a id="Download" href="/Contacts/Edit/0">Добавить контакт</a><br />
+}
+@for (int i = 0; i < ContactsController.Contacts.Count; i++)
+{
+    <a href="@ContactsController.Contacts[i].Description" target="_blank">
+        @{string icon = $"{CRUD.Host.Substring(0, CRUD.Host.IndexOf("api"))}icons/{ContactsController.Contacts[i].Header}";}
+        <img src="@icon" style="height:65px"/>
+    </a>
+    @if (AccountController.Role == "admin")
+    {
+        <a id="Download" href="/Contacts/Edit/@ContactsController.Contacts[i].Id">Редактировать</a>
+        <a id="Download" href="/Contacts/Delete/@ContactsController.Contacts[i].Id">Удалить</a><br />
+    }
+}

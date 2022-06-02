@@ -1,0 +1,23 @@
+﻿@using Site.Controllers
+@{ Layout = "_Layout"; }
+
+<form method="post" asp-controller="Services" asp-action="UpdateService">
+@{Service? Service = ServicesController.Template;}
+<div align="center" style="width:920px">
+    <p id="TitleName">Услуга</p>
+    <div style="float:left;margin: 7px 7px 7px 0;min-height:300px">
+    </div>
+    <div align="left">
+        <label style="color:white">Название</label><br />
+        <input type="text" style="width:513px" name="Header" value="@Service.Header" />
+    </div>
+    <div align="left">
+        <label style="color:white">Описание</label><br />
+        <textarea style="width:513px;height:100px;text-align:left" type="text" name="Description">@Service.Description</textarea>
+    </div>
+</div>
+<br />
+<div style="width:920px" align="right">
+    <input type="submit" value="Отправить"/>
+</div>
+</form>

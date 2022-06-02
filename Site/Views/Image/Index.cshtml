@@ -1,0 +1,27 @@
+﻿@using Site.Controllers
+@{
+    Layout = "_Layout";
+}
+<p id=TitleName>Изображения на сервере</p>
+<div style="width:920px;color:white">
+    <form method="post" asp-controller="Image" asp-action="UploadPic" enctype="multipart/form-data">
+        <input style="width:300px" type="file" name="images" accept="image/jpeg,image/png" multiple/><br />
+        <input style="width:300px" type="submit" value="Залить выбранные изображения"/>
+    </form>
+
+    @for (int i = 0; i < ImageController.Pics.Count; i++)
+    {
+        <div style="display:inline-block;max-width:300px">
+            <img src="@ImageController.Pics[i]" style="max-width:300px"><br />
+            @{
+                string name = ImageController.Pics[i].Substring(ImageController.Pics[i].LastIndexOf("/") + 1);
+                if (name.Length > 30) name = name.Substring(0, 30);
+            }
+            <span style="max-width:300px">@name</span><br />
+            <form method="post" asp-controller="Image" asp-action="DeletePic">
+                <input type="hidden" name="id" value="@ImageController.Pics[i].Substring(ImageController.Pics[i].LastIndexOf("/") + 1)"/>
+                <input type="submit" style="width:300px" value="Удалить"/>
+            </form>
+       </div>
+    }
+</div>

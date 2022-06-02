@@ -1,0 +1,46 @@
+﻿@using Site.Controllers
+@{ Layout = "_Layout"; }
+<p id="TitleName">Блог</p>
+@foreach (Project blog in HomeController.Blogs)
+{
+    <button class="accordion" style="color:darkturquoise">@blog.Header</button>
+    <div class="panel">
+        <img align="left" style="float:left;margin: 7px 7px 7px 0;" src="@blog.Image" width="400">
+        <p>@{
+                string[] patt = new string[1];
+                patt[0] = "\r\n";
+                string[] text = blog.Description.Split(patt, StringSplitOptions.None);
+                patt[0] = " ";
+                }
+                @for (int i = 0; i < text.Length; i++)
+                {
+                    <span>&nbsp;&nbsp;&nbsp;</span>@text[i]
+                    @if(i < text.Length - 1)
+                    {
+                        <br />
+                    }
+                }
+        </p>
+    </div>
+}
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                for (j = 0; j < acc.length; j++) {
+                    if (acc[j] != this)
+                        acc[j].nextElementSibling.style.maxHeight = null;
+                }
+            }
+        });
+    }
+</script>

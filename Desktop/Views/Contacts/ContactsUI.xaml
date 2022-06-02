@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="Desktop.ContactsUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Desktop"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate x:Key="DeleteTemplate" >
+                <Button Content="Удалить"
+                        FontSize="18"
+                        FontFamily="Segoe UI"
+                        Command="{Binding DataContext.Delete, ElementName=_grid}" Background="{x:Null}"/>
+            </DataTemplate>
+            <DataTemplate x:Key="ImageTemplate" >
+                <Button Width="65"
+                        Height="65"
+                        ToolTip="Вставить иконку"
+                        Command="{Binding DataContext.SelectPic, ElementName=_grid}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="{Binding Header, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Button.Background>
+                </Button>
+            </DataTemplate>
+        </Grid.Resources>
+        <DataGrid x:Name="_grid"
+                  IsSynchronizedWithCurrentItem="True"
+                  SelectionMode="Extended"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  ItemsSource="{Binding Contacts, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Selected}"
+                  IsReadOnly="False" Height="484" VerticalAlignment="Top" HorizontalAlignment="Center" Width="800" Margin="0,106,0,0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="CellEditEnding">
+                    <i:InvokeCommandAction Command="{Binding SaveChanges}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}"
+                                    Header="Id"
+                                    IsReadOnly="True"
+                                    Width="Auto"
+                                    FontSize="18"
+                                    FontFamily="Segoe UI"/>
+                <DataGridTemplateColumn CellTemplate="{StaticResource ImageTemplate}" Header="Иконка"/>
+                <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                                    Header="Контакт"
+                                    IsReadOnly="False"
+                                    Width="Auto"
+                                    FontSize="18"
+                                    FontFamily="Segoe UI"/>
+                <DataGridTemplateColumn CellTemplate="{StaticResource DeleteTemplate}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox HorizontalAlignment="Left"
+                 TextWrapping="Wrap"
+                 Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" 
+                 VerticalAlignment="Top"
+                 Width="729"
+                 FontSize="18" 
+                 FontFamily="Segoe UI"
+                 Height="26"
+                 Margin="71,19,0,0"
+                 BorderBrush="White">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding Send}"/>
+            </TextBox.InputBindings>
+        </TextBox>
+        <Button Content="Добавить"
+                HorizontalAlignment="Center"
+                Margin="0,71,0,0"
+                VerticalAlignment="Top"
+                Height="30"
+                Width="800"
+                FontFamily="Segoe UI"
+                FontSize="18"
+                Command="{Binding Send}" 
+                BorderBrush="White"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Контакт" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe UI" Height="16" FontSize="12" Margin="71,1,0,0"/>
+        <Button HorizontalAlignment="Left"
+                Margin="1,1,0,0"
+                VerticalAlignment="Top" 
+                Width="65"
+                Height="65"
+                BorderBrush="White"
+                BorderThickness="1"
+                Content="{Binding Plus}"
+                ToolTip="Вставить иконку"
+                Command="{Binding SetPic}">
+            <Button.Background>
+                <ImageBrush ImageSource="{Binding Header, UpdateSourceTrigger=PropertyChanged}"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</UserControl>

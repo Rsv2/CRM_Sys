@@ -1,0 +1,57 @@
+﻿<Window x:Class="Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Desktop"
+        mc:Ignorable="d" Background="{DynamicResource winColor}"
+        Title="Вход" Height="170" Width="270" MaxHeight="170" MaxWidth="270" MinHeight="170" MinWidth="270"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock
+                   Foreground="White"
+                   Margin="10,10,0,0"
+                   FontFamily="Segoe UI"
+                   FontSize="12"
+                   TextWrapping="Wrap" 
+                   Text="Логин" HorizontalAlignment="Left" Width="70" Height="16" VerticalAlignment="Top"/>
+        <TextBox x:Name="Login"
+            BorderBrush="{DynamicResource textColor}"
+            Margin="10,26,0,0"
+            FontFamily="Segoe UI"
+            FontSize="18"
+            TextWrapping="Wrap" 
+            Text=""
+            HorizontalAlignment="Left"
+            Width="230"
+            Height="26"
+            VerticalAlignment="Top"
+            KeyDown="EnterDesktop"/>
+        <TextBlock
+                   Foreground="White"
+                   Margin="10,52,0,0"
+                   FontFamily="Segoe UI"
+                   FontSize="12"
+                   TextWrapping="Wrap" 
+                   Text="Пароль" HorizontalAlignment="Left" Width="70" Height="16" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="Password"
+                     Password=""
+                     Margin="10,68,0,0"
+                     BorderBrush="{DynamicResource textColor}"
+                     Foreground="{DynamicResource textColor}"
+                     Background="{DynamicResource fieldColor}" 
+                     FontFamily="Segoe UI"
+                     FontSize="18"
+                     HorizontalAlignment="Left"
+                     Width="230"
+                     Height="26"
+                     VerticalAlignment="Top"
+                     KeyDown="EnterDesktop"/>
+        <Button Content="Войти"
+                FontFamily="Segoe UI"
+                FontSize="18"
+                BorderBrush="{DynamicResource textColor}"
+                Margin="10,99,0,0" HorizontalAlignment="Left" Width="230" Height="30" VerticalAlignment="Top" Click="EnterDesktop"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,56 @@
+﻿@using Site.Controllers
+@{
+    Layout = "_Layout";
+}
+<p id="TitleName">Услуги</p><br />
+@if (AccountController.Role == "admin")
+{
+    <a href="/Services/AddService" id="Subheader">Добавить услугу</a><br />
+}
+@foreach (Service Service in ServicesController.Services)
+{
+    <button class="accordion" style="color:darkturquoise">@Service.Header</button>
+    <div class="panel">
+        <p>@{
+                string[] patt = new string[1];
+                patt[0] = "\r\n";
+                string[] text = Service.Description.Split(patt, StringSplitOptions.None);
+                patt[0] = " ";
+                }
+                @for (int i = 0; i < text.Length; i++)
+                {
+                    <span>&nbsp;&nbsp;&nbsp;</span>@text[i]
+                    @if(i < text.Length - 1)
+                    {
+                        <br />
+                    }
+                }
+        </p>
+        @if (AccountController.Role == "admin")
+        {
+            <a id="Download" align="left" style="color:mistyrose;float:right;margin: 7px 7px 7px 0;" href="/Services/DeleteService/@Service.Id">Удалить</a>
+            <a id="Download" align="left" style="color:lightcyan;float:right;margin: 7px 7px 7px 0;" href="/Services/AddService/@Service.Id">Редактировать</a>
+        }
+    </div>
+}
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                for (j = 0; j < acc.length; j++) {
+                    if (acc[j] != this)
+                        acc[j].nextElementSibling.style.maxHeight = null;
+                }
+            }
+        });
+    }
+</script>

@@ -1,0 +1,55 @@
+﻿@{ Layout = "_LayoutAdmin"; }
+
+@using Site.Controllers;
+<div style="align-content:center;color:white">
+    <a id="Download" href="/Requests/Today" style="display:inline-block;width: 160px;">Сегодня</a>
+    <a id="Download" href="/Requests/Tomorrow" style="display:inline-block;width: 160px;">Вчера</a>
+    <a id="Download" href="/Requests/Week" style="display:inline-block;width: 160px;">Неделя</a>
+    <a id="Download" href="/Requests/Month" style="width: 160px;">Месяц</a>
+    <div>
+    <form method="post" asp-controller="Requests" asp-action="StartDate" style="display:inline-block;width: 160px;">
+        <input type="date" name="start" value="@RequestsController.Start.ToString("yyyy-MM-dd")" onchange="this.form.submit()"/>
+    </form>
+    <form method="post" asp-controller="Requests" asp-action="EndDate" style="display:inline-block;width: 160px;">
+        <input type="date" name="end" value="@RequestsController.End.ToString("yyyy-MM-dd")" onchange="this.form.submit()"/>
+    </form>
+    </div>
+        <p id=Subheader style="text-align:left;line-height:80%">Всего заявок: @RequestsController.RawRequests.Count</p>
+        <p id=Subheader style="text-align:left;line-height:0%">За указанный перод: @RequestsController.Requests.Count</p>
+    <table>
+        <tr>
+            <td width="30">Id</td>
+            <td width="100">Дата</td>
+            <td width="150">Имя</td>
+            <td width="150">e-mail</td>
+            <td width="300">Сообщение</td>
+            <td width="100">Статус</td>
+        </tr>
+        @foreach (RequestMessage request in RequestsController.Requests)
+        {
+            <tr>
+                <td width="30">@request.Id</td>
+                <td width="100">@request.Date</td>
+                <td width="150">@request.Name</td>
+                <td width="150">@request.Email</td>
+                <td width="300">@request.Message</td>
+                <td width="100">
+                <form method="post" asp-controller="Requests" asp-action="SetStatus">
+                    <select onchange="this.form.submit()" name="Status">
+                        @if(request.Status == 0){<option selected value=@request.Id,0>Получена</option>}
+                        else{<option value=@request.Id,0>Получена</option>}
+                        @if(request.Status == 1){<option selected value=@request.Id,1>В работе</option>}
+                        else{<option value=@request.Id,1>В работе</option>}
+                        @if(request.Status == 2){<option selected value=@request.Id,2>Выполнена</option>}
+                        else{<option value=@request.Id,2>Выполнена</option>}
+                        @if(request.Status == 3){<option selected value=@request.Id,3>Отклонена</option>}
+                        else{<option value=@request.Id,3>Отклонена</option>}
+                        @if(request.Status == 4){<option selected value=@request.Id,4>Отменена</option>}
+                        else{<option value=@request.Id,4>Отменена</option>}
+                    </select>
+                </form>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

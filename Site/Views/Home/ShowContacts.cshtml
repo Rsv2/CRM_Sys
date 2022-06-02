@@ -1,0 +1,10 @@
+﻿@using Site.Controllers
+@{ Layout = "_Layout"; }
+<p id="TitleName">Контакты</p>
+@foreach (Motto contact in HomeController.Contacts)
+{
+    @for (int i = 0; i < HomeController.Contacts.Count; i++)
+    {
+        <p>@HomeController.Contacts[i].Text</p>
+    }
+}

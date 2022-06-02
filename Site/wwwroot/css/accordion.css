@@ -1,0 +1,33 @@
+﻿.accordion {
+    background-image: url("../images/backgrnd.jpg");
+    padding: 0px 0px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    transition: 0.4s;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(41,171,226);
+    font-family: 'Monotype Corsiva';
+    max-width: 920px;
+}
+
+    .active, .accordion:hover {
+        background-image: url("../images/backgrndl.jpg");
+        font-family: 'Monotype Corsiva';
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        color: rgb(41,171,226);
+        max-width: 920px;
+    }
+
+.panel {
+    background-image: url("../images/backgrnd.jpg");
+    max-height: 0;
+    overflow: hidden;
+    max-width: 920px;
+    transition: max-height 0.2s ease-out;
+}

@@ -1,0 +1,61 @@
+﻿@using Site.Controllers;
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Сайт</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/navcss.css" />
+    <link rel="stylesheet" href="~/css/accordion.css" />
+</head>
+<body>
+    <center>
+        <header>
+            <p id="TitleName">Сайт</p>
+            <p id="Subheader">@Mottos.GetMotto()</p>
+            <nav>
+                <ul class="topmenu">
+                    <li>
+                        <a href="/Home/Index">Главная</a>
+                        <ul class="submenu">
+                            <li>
+                                @if (AccountController.Role == "admin")
+                                {
+                                    <a href="/Requests/Worktable" class="submenu-link">Рабочий стол</a>
+                                }
+                                <a href="/Services/ShowServices" class="submenu-link">Услуги</a>
+                                <a href="/Projects/ShowProjects" class="submenu-link">Проекты</a>
+                                <a href="/Blog/ShowBlog" class="submenu-link">Блог</a>
+                                <a href="/Contacts/Index" class="submenu-link">Контакты</a>
+                                @if (AccountController.Role == "admin")
+                                {
+                                    <a href="/Image/Index" class="submenu-link">Изображения</a>
+                                }
+                            </li>
+                        </ul>
+                    </li>
+                    @if (AccountController.Role == "admin")
+                    {
+                        <li>
+                        <a href="/Home/Index">Администратор</a>
+                        <ul class="submenu">
+                        <li><a href="/Account/Logout">Выход</a></li>
+                        </ul>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </center>
+    <div class="footer">
+
+    </div>
+</body>
+</html>

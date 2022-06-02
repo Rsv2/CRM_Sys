@@ -1,0 +1,34 @@
+﻿@using Site.Controllers
+@{ Layout = "_Layout"; }
+
+<form method="post" asp-controller="Contacts" asp-action="UpdateContact" enctype="multipart/form-data">
+    @{
+        string icon = "";
+        if (ContactsController.Selected.Id == 0)
+        {
+            icon = $"{CRUD.Host.Substring(0, CRUD.Host.IndexOf("api"))}icons/icon.png";
+        }
+        else icon = $"{CRUD.Host.Substring(0, CRUD.Host.IndexOf("api"))}icons/{ContactsController.Selected.Header}";
+    }
+    <input style="display:none" id="uploadImage" type="file" name="input" accept="image/jpeg,image/png" multiple/>
+    <img id="result" class="preview" src="@icon" style="max-height:128px;max-width:128px" onClick="input.click()"/>
+    <input type="text" name="Description" style="width:300px" value="@ContactsController.Selected.Description"/>
+    <input type="submit" value="Отправить"/>
+</form>
+
+<script>
+    FReader = new FileReader();
+    // событие, когда файл загрузится
+    FReader.onload = function(e) {
+        document.querySelector("#result").src = e.target.result;
+    };
+ 
+// выполнение функции при выборки файла
+    document.querySelector("input").addEventListener("change", loadImageFile);
+ 
+// функция выборки файла
+function loadImageFile() {
+    var file = document.querySelector("input").files[0];
+    FReader.readAsDataURL(file);
+}
+</script>

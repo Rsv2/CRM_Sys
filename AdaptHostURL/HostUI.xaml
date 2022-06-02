@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="AdaptHostURL.HostUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdaptHostURL"
+             mc:Ignorable="d" d:DesignWidth="800" Height="210">
+    <Grid>
+        <TextBox
+                 FontFamily="Segoe UI"
+                 FontSize="18"
+                 Margin="10,26,480,0"
+                 TextWrapping="Wrap"
+                 Text="{Binding CurHost}" 
+                 VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left"
+                   Foreground="White"
+                   Margin="10,10,0,0"
+                   TextWrapping="Wrap" 
+                   Text="Адрес хоста WebApi"
+                   VerticalAlignment="Top"/>
+        <TextBox
+                 FontFamily="Segoe UI"
+                 FontSize="18"
+                 Margin="10,68,480,0"
+                 TextWrapping="Wrap"
+                 Text="{Binding CurSiteHost}" 
+                 VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left"
+                   Foreground="White"
+                   Margin="10,52,0,0"
+                   TextWrapping="Wrap" 
+                   Text="Адрес хоста сайта"
+                   VerticalAlignment="Top"/>
+        <TextBox
+                 FontFamily="Segoe UI"
+                 FontSize="12"
+                 Margin="10,110,10,0"
+                 TextWrapping="Wrap"
+                 Text="{Binding AuthDB}"
+                 VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left"
+                   Foreground="White"
+                   Margin="10,94,0,0"
+                   TextWrapping="Wrap" 
+                   Text="Строка подключения БД авторизации"
+                   VerticalAlignment="Top"/>
+        <TextBox
+                 FontFamily="Segoe UI"
+                 FontSize="12"
+                 Margin="10,144,10,0"
+                 TextWrapping="Wrap"
+                 Text="{Binding SiteDB}" Height="18" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left"
+                   Foreground="White"
+                   Margin="10,128,0,0"
+                   TextWrapping="Wrap" 
+                   Text="Строка подключения БД сайта"
+                   VerticalAlignment="Top"/>
+        <Button Content="Принять изменения"
+                FontFamily="Segoe UI"
+                FontSize="18"
+                HorizontalAlignment="Left"
+                Margin="10,167,0,0"
+                VerticalAlignment="Top"
+                Command="{Binding Confirm}"/>
+    </Grid>
+</UserControl>

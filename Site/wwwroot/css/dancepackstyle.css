@@ -1,0 +1,37 @@
+﻿#DancepackUI {
+    padding:0;
+    margin:0;
+}
+
+#Smallfont {
+    font-family: 'Monotype Corsiva';
+    text-align:center;
+    font-size: 18px;
+    color:white;
+}
+
+#layer1, #layer2 {
+    position: relative;
+}
+
+#layer1 {
+    text-align: left;
+    z-index: 1;
+    width: 460px;
+}
+
+#layer2 {
+    text-align: right;
+    z-index: 2;
+    width: 460px;
+}
+
+#dancebutton {
+    font-family: 'Monotype Corsiva';
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    width:160px;
+    text-wrap: normal;
+    background: url(../images/backgrndl.jpg);
+}

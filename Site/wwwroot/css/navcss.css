@@ -1,0 +1,156 @@
+﻿body {
+    background: url(../images/backgrnd.jpg);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+nav {
+    background: #413F3C;
+    max-width: 920px;
+}
+
+    nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+        nav ul:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    nav a {
+        text-decoration: none;
+        display: block;
+        transition: .3s linear;
+    }
+
+.topmenu > li {
+    float: left;
+    position: relative;
+    min-width: 300px;
+    font-family: 'Monotype Corsiva';
+    border-left: 1px solid black;
+}
+
+    .topmenu > li:first-child {
+        border-left: 0;
+    }
+
+    .topmenu > li > a {
+        padding: 20px 30px;
+        font-size: 24px;
+        color: #FEFDFD;
+        letter-spacing: 2px;
+    }
+
+        .topmenu > li > a.active,
+        .submenu a:hover {
+            color: #ddbe86;
+        }
+
+.topmenu .fa,
+.submenu .fa {
+    margin-left: 5px;
+    color: inherit;
+}
+
+.submenu {
+    font-family: 'Monotype Corsiva';
+    position: absolute;
+    z-index: 5;
+    min-width: 300px;
+    background: url(../images/backgrndl.jpg);
+    border-top: 1px solid #CBCBCC;
+    border-left: 1px solid #CBCBCC;
+    border-right: 1px solid #CBCBCC;
+    visibility: hidden;
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: rotateX(-90deg);
+    transition: .3s linear;
+}
+
+    .submenu li {
+        position: relative;
+    }
+
+        .submenu li a {
+            color: #ffffff; /*#282828;*/
+            padding: 10px 30px;
+            font-size: 24px;
+            border-bottom: 1px solid #CBCBCC;
+        }
+
+    .submenu .submenu {
+        position: absolute;
+        left: 100%;
+        top: -1px;
+        transition: .3s linear;
+    }
+
+nav li:hover > .submenu {
+    transform: rotateX(0deg);
+    visibility: visible;
+    opacity: 1;
+}
+
+#Subheader {
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Monotype Corsiva';
+    font-weight: bold;
+    color: rgb(0,153,255);
+}
+
+#SubheaderPurple {
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Monotype Corsiva';
+    font-weight: bold;
+    color: rgb(255, 0, 255);
+}
+
+#TitleName {
+    line-height: 1;
+    text-align: center;
+    font-size: 60px;
+    font-family: 'Monotype Corsiva';
+    font-weight: bold;
+    color: rgb(41,171,226);
+}
+#TitleNameLong {
+    text-align: center;
+    font-size: 48px;
+    font-family: 'Monotype Corsiva';
+    font-weight: bold;
+    color: rgb(41,171,226);
+}
+
+#Normal {
+    font-size: 18px;
+    font-family: 'Segoe UI';
+    color: white;
+}
+
+#Pink {
+    color: rgb(255,153,153);
+}
+
+#Download {
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Monotype Corsiva';
+    font-weight: bold;
+    margin:0;
+    padding:0;
+    color: white;
+}

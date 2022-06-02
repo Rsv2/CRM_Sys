@@ -1,0 +1,14 @@
+﻿<Window x:Class="AdaptHostURL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdaptHostURL"
+        mc:Ignorable="d" Background="{DynamicResource winColor}" Topmost="True"
+        Title="Настройка Url адресов и строк подключения" Height="265" Width="835">
+    <Grid>
+        <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top">
+            <local:HostUI/>
+        </Viewbox>
+    </Grid>
+</Window>

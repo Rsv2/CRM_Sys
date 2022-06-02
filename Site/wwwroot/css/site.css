@@ -1,0 +1,51 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex: 0 0 auto;
+}
+
+p {
+    font-family: 'Segoe UI';
+    font-style:italic;
+    font-weight:normal;
+    text-align: left;
+    font-size: 18px;
+    color: white;
+    max-width: 800px;
+}
+
+header {
+    max-width: 920px;
+    font-family: 'Monotype Corsiva';
+}
+
+td {
+    border: thin solid white;
+}
+
+table {
+    border: thin solid white;
+}
+
+tr {
+    border: thin solid white;
+}
+
